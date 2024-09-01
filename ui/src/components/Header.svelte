@@ -1,30 +1,22 @@
 <script>
     import { BottomNav, BottomNavItem, Tooltip, Skeleton, ImagePlaceholder } from 'flowbite-svelte';
     import { HomeSolid, MessageDotsSolid, AdjustmentsVerticalOutline, UserCircleSolid, PlusOutline } from 'flowbite-svelte-icons';
+    import { page } from '$app/stores';
+    $: activeUrl = $page.url.pathname;
   </script>
   
  
-  <BottomNav position="absolute" navType="application" classInner="grid-cols-5">
-    <BottomNavItem href="" btnName="Home" appBtnPosition="left">
-      <HomeSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      <Tooltip arrow={false}>Home</Tooltip>
+  <BottomNav {activeUrl} position="absolute" classInner="grid-cols-4">
+    <BottomNavItem btnName="Home" href="/">
+      <HomeSolid />
     </BottomNavItem>
-    <BottomNavItem btnName="Wallet" appBtnPosition="middle">
-      <MessageDotsSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      <Tooltip arrow={false}>Chat</Tooltip>
+    <BottomNavItem btnName="Chat" href="/docs/pages/quickstart" exact={false} >
+      <MessageDotsSolid />
     </BottomNavItem>
-    <div class="flex items-center justify-center">
-      <BottomNavItem btnName="Create new item" appBtnPosition="middle" btnClass="inline-flex items-center justify-center w-10 h-10 font-medium bg-primary-600 rounded-full hover:bg-primary-700 group focus:ring-4 focus:ring-primary-300 focus:outline-none dark:focus:ring-primary-800">
-        <PlusOutline class="text-white" />
-        <Tooltip arrow={false}>New Post</Tooltip>
-      </BottomNavItem>
-    </div>
-    <BottomNavItem btnName="Settings" appBtnPosition="middle">
-      <AdjustmentsVerticalOutline class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      <Tooltip arrow={false}>Settings</Tooltip>
+    <BottomNavItem btnName="Settings" href="/docs/components/bottom-navigation">
+      <AdjustmentsVerticalOutline />
     </BottomNavItem>
-    <BottomNavItem href="/profile/1" btnName="Profile" appBtnPosition="right">
-      <UserCircleSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
-      <Tooltip arrow={false}>Profile</Tooltip>
+    <BottomNavItem btnName="Profile" href="/profile/1">
+      <UserCircleSolid />
     </BottomNavItem>
   </BottomNav>
