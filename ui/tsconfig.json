@@ -1,6 +1,11 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+		"baseUrl": ".",
+        "paths": {
+            "$lib":["src/lib"],
+            "$lib/*":["src/lib/*"]
+        },
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
@@ -10,7 +15,8 @@
 		"sourceMap": true,
 		"strict": true,
 		"moduleResolution": "bundler"
-	}
+	},
+    "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	// except $lib which is handled by https://kit.svelte.dev/docs/configuration#files
 	//
