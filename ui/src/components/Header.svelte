@@ -3,10 +3,15 @@
     import { HomeSolid, MessageDotsSolid, AdjustmentsVerticalOutline, UserCircleSolid, PlusOutline } from 'flowbite-svelte-icons';
   </script>
   
+  <style>
+    .active{
+      background-color: red;
+    }
+  </style>
  
   <BottomNav position="absolute" navType="application" classInner="grid-cols-5">
-    <BottomNavItem href="" btnName="Home" appBtnPosition="left">
-      <HomeSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
+    <BottomNavItem href="/" btnName="Home" appBtnPosition="left">
+      <HomeSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500 active" />
       <Tooltip arrow={false}>Home</Tooltip>
     </BottomNavItem>
     <BottomNavItem btnName="Wallet" appBtnPosition="middle">
