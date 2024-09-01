@@ -1,16 +1,16 @@
 <script>
     import { BottomNav, BottomNavItem, Tooltip, Skeleton, ImagePlaceholder } from 'flowbite-svelte';
-    import { HomeSolid, WalletSolid, AdjustmentsVerticalOutline, UserCircleSolid, PlusOutline } from 'flowbite-svelte-icons';
+    import { HomeSolid, MessageDotsSolid, AdjustmentsVerticalOutline, UserCircleSolid, PlusOutline } from 'flowbite-svelte-icons';
   </script>
   
  
   <BottomNav position="absolute" navType="application" classInner="grid-cols-5">
-    <BottomNavItem btnName="Home" appBtnPosition="left">
+    <BottomNavItem href="" btnName="Home" appBtnPosition="left">
       <HomeSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       <Tooltip arrow={false}>Home</Tooltip>
     </BottomNavItem>
     <BottomNavItem btnName="Wallet" appBtnPosition="middle">
-      <WalletSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
+      <MessageDotsSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       <Tooltip arrow={false}>Chat</Tooltip>
     </BottomNavItem>
     <div class="flex items-center justify-center">
@@ -23,7 +23,7 @@
       <AdjustmentsVerticalOutline class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       <Tooltip arrow={false}>Settings</Tooltip>
     </BottomNavItem>
-    <BottomNavItem btnName="Profile" appBtnPosition="right">
+    <BottomNavItem href="/profile/1" btnName="Profile" appBtnPosition="right">
       <UserCircleSolid class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-500" />
       <Tooltip arrow={false}>Profile</Tooltip>
     </BottomNavItem>
