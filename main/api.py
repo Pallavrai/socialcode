@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 from .models import Profile, Post, Comment, Like, Follow
 from .schema import ProfileSchema, PostSchema, CommentSchema, LikeSchema, FollowSchema, UserSchema
 
-api = NinjaAPI()
+api = NinjaAPI(title="SocialCode")
 
 # Profile endpoints
 @api.get("/profiles", response=List[ProfileSchema])
