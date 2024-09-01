@@ -1,13 +1,13 @@
-import type { PageLoad } from "./$types";
+import type { PageLoad } from "./$types"
 
-export const ssr = false;
+export const ssr = false
 
 export const load: PageLoad = ({ params }) => {
-  const { userid } = params;
+     const { userid } = params
 
-  console.log(userid);
+     console.log(userid)
 
-  return {
-    userid,
-  };
-};
+     return {
+          userid,
+     }
+}
