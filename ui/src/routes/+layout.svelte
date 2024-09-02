@@ -3,10 +3,12 @@
      import { page } from "$app/stores"
      import { onDestroy } from "svelte"
      import Header from "../components/header/Header.svelte"
+     import { SvelteKitTopLoader } from "sveltekit-top-loader"
+     import type Page from "./+page.svelte"
 
      let currentPath: string
 
-     const unsubscribe = page.subscribe($page => {
+     const unsubscribe = page.subscribe(($page: Page) => {
           currentPath = $page.url.pathname
      })
 
@@ -22,4 +24,7 @@
      <Header />
 {/if}
 
-<slot />
+<div>
+     <SvelteKitTopLoader color={"#EB4F27"} />
+     <slot />
+</div>
