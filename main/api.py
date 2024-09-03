@@ -1,18 +1,31 @@
 from typing import List
-from ninja import NinjaAPI
+from ninja_extra import NinjaExtraAPI
+from ninja_jwt.authentication import JWTAuth
+from ninja_jwt.controller import NinjaJWTDefaultController
+from ninja.orm import create_schema
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from .models import Profile, Post, Comment, Like, Follow
 from .schema import ProfileSchema, PostSchema, CommentSchema, LikeSchema, FollowSchema, UserSchema
 
-api = NinjaAPI(title="SocialCode")
+api = NinjaExtraAPI(title="SocialCode")
+api.register_controllers()
+
+#User enpoints
+# UserCreateSchema = create_schema(User, exclude=[
+#      'last_login', 'is_superuser', 'is_staff', 'groups', 'user_permissions']
+# )
+# @api.post("/user", response=List[UserSchema])
+# def create_user(request, payload: UserCreateSchema):
+#     user = User.objects.create(**payload.dict(exclude_unset=True))
+#     return user
 
 # Profile endpoints
 @api.get("/profiles", response=List[ProfileSchema])
 def list_profiles(request):
     return Profile.objects.select_related('user').all()
 
-@api.get("/profiles/{profile_id}", response=ProfileSchema)
+@api.get("/profiles/{profile_id}", response=ProfileSchema,auth=JWTAuth())
 def get_profile(request, profile_id: int):
     profile = get_object_or_404(Profile, id=profile_id)
     return profile
