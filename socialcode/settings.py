@@ -129,3 +129,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+NINJA_EXTRA = {
+    'PAGINATION_CLASS':"ninja_extra.pagination.PageNumberPaginationExtra",
+    'PAGINATION_PER_PAGE': 100
+}
