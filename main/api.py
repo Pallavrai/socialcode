@@ -1,5 +1,5 @@
 from typing import List
-from ninja_extra import NinjaExtraAPI
+from ninja_extra import NinjaExtraAPI,permissions
 from ninja_jwt.authentication import JWTAuth
 from ninja_jwt.controller import NinjaJWTDefaultController
 from ninja.orm import create_schema
@@ -16,9 +16,9 @@ from ninja_extra import (
 )
 api = NinjaExtraAPI(title="SocialCode")
 
+api.register_controllers(NinjaJWTDefaultController)
 
-
-@api_controller("/user")
+@api_controller("/user",tags=["User"])
 class UserModelController(ModelControllerBase):
 
 
@@ -29,7 +29,7 @@ class UserModelController(ModelControllerBase):
     )
 api.register_controllers(UserModelController)
 
-@api_controller("/profile")
+@api_controller("/profile",tags=["Profile"],auth=JWTAuth(),permissions=[permissions.IsAuthenticated])
 class ProfileModelController(ModelControllerBase):
     model_config = ModelConfig(
         model=Profile,
@@ -38,7 +38,7 @@ class ProfileModelController(ModelControllerBase):
     )
 api.register_controllers(ProfileModelController)
 
-@api_controller("/post")
+@api_controller("/post",tags=["Posts"],auth=JWTAuth(),permissions=[permissions.IsAuthenticated])
 class PostModelController(ModelControllerBase):
     model_config = ModelConfig(
         model=Post,
