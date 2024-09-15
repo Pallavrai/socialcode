@@ -24,7 +24,18 @@ class UserModelController(ModelControllerBase):
 
     model_config = ModelConfig(
         model=User,
-        allowed_routes=["create","update", "patch", "delete"],
+        allowed_routes=["create"],
+        schema_config=ModelSchemaConfig(include=["password","username", "first_name", "last_name","email"]),
+    )
+api.register_controllers(UserModelController)
+
+@api_controller("/user",tags=["UserOperations"],auth=JWTAuth(),permissions=[permissions.IsAuthenticated])
+class UserModelController(ModelControllerBase):
+
+
+    model_config = ModelConfig(
+        model=User,
+        allowed_routes=["update", "patch", "delete"],
         schema_config=ModelSchemaConfig(include=["password","username", "first_name", "last_name","email"]),
     )
 api.register_controllers(UserModelController)
